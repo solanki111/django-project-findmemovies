@@ -117,7 +117,7 @@ def discover(request):
     context = {
         'object': {}
     }
-    return render(request, 'search_engine/discover.html', context)
+    return render(request, 'search_engine/card_view.html', context)
 
 
 def check_response(response):
