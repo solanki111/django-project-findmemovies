@@ -81,4 +81,3 @@ class TheMovieDb:
 
         response = requests.request("GET", full_url)
         return response
-

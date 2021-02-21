@@ -211,7 +211,6 @@ fieldset, label { margin: 0; padding: 0; }
 .rating > label:hover ~ input:checked ~ label, /* lighten current selection */
 .rating > input:checked ~ label:hover ~ label { color: #FFED85;  }
 
-
 a[data-tooltip] {
   position: relative;
 }
@@ -267,57 +266,62 @@ a[data-tooltip][data-placement="top"]::after {
   <title> FindmeMovies </title>
 </head>
 <body>
-<div class="movie-card-full">
-  <div class="container">
-    <img src="https://image.tmdb.org/t/p/w500{{ results.poster_path }}" alt="cover" class="cover" width="200"/>
-    <div class="hero">
-      <div class="details">
-        {% if results.name %}
-          <div class="title1"><h1>{{ results.name }}</h1><span></span></div>
-        {% else %}
-          <div class="title1"><h1>{{ results.title }}</h1><span></span></div>
-        {% endif %}
-        <div class="title2">{{ results.vote_count }} reviews</div>
-        <h4>{{ results.vote_average }}
-          <span class="likes">
-            <fieldset class="rating">
-              <input type="radio" id="star1" name="rating" value="1" /><label class = "full" for="star1"></label>
-            </fieldset>
-          </span>
-        </h4>
-      </div> <!-- end details -->
-    </div> <!-- end hero -->
-    <div class="description">
-      <div class="column1">
-        {% for each in results.genres %}
-        <span class="tag">{{ each.name }}</span>
-        {% endfor %}
-      </div> <!-- end column1 -->
-      <div class="column2">
-        {% if results.name %}
-        <p>{{ results.overview }}<a href="https://www.imdb.com/find?q={{results.name}}"> read more</a></p>
-        <div class="sources">
-          <a href="https://www.imdb.com/find?q={{results.name}}" target="_blank" data-tooltip="IMDB" data-placement="top">
-            <img src="{% static 'images/imdb.png' %}" alt="imdb" style="width:50px"/>
-          </a>
-          <a href="https://www.justwatch.com/us/search?q={{results.name}}" target="_blank" data-tooltip="Just Watch" data-placement="top">
-            <img src="{% static 'images/just_watch.png' %}" alt="just_watch" style="width:80px"/>
-          </a>
-        </div> <!-- end sources -->
-        {% else %}
-        <p>{{ results.overview }}<a href="https://www.imdb.com/title/{{results.imdb_id}}"> read more</a></p>
-        <div class="sources">
-          <a href="https://www.imdb.com/title/{{results.imdb_id}}" target="_blank" data-tooltip="IMDB" data-placement="top">
-            <img src="{% static 'images/imdb.png' %}" alt="imdb" style="width:50px"/>
-          </a>
-          <a href="https://www.justwatch.com/us/search?q={{results.title}}" target="_blank" data-tooltip="Just Watch" data-placement="top">
-            <img src="{% static 'images/just_watch.png' %}" alt="just_watch" style="width:80px"/>
-          </a>
-        </div> <!-- end sources -->
-        {% endif %}
-      </div> <!-- end column2 -->
-    </div> <!-- end description -->
-  </div> <!-- end container -->
-</div> <!-- end movie-card-full -->
+<div class="container mt-5">
+  <h2 class="text-center"></h2>
+  <div class="row justify-content-center">
+    <div class="movie-card-full">
+      <div class="container">
+        <img src="https://image.tmdb.org/t/p/w500{{ results.poster_path }}" alt="cover" class="cover" width="200"/>
+        <div class="hero">
+          <div class="details">
+            {% if results.name %}
+              <div class="title1"><h1>{{ results.name }}</h1><span></span></div>
+            {% else %}
+              <div class="title1"><h1>{{ results.title }}</h1><span></span></div>
+            {% endif %}
+            <div class="title2">{{ results.vote_count }} reviews</div>
+            <h4>{{ results.vote_average }}
+              <span class="likes">
+                <fieldset class="rating">
+                  <input type="radio" id="star1" name="rating" value="1" /><label class = "full" for="star1"></label>
+                </fieldset>
+              </span>
+            </h4>
+          </div> <!-- end details -->
+        </div> <!-- end hero -->
+        <div class="description">
+          <div class="column1">
+            {% for each in results.genres %}
+            <span class="tag">{{ each.name }}</span>
+            {% endfor %}
+          </div> <!-- end column1 -->
+          <div class="column2">
+            {% if results.name %}
+            <p>{{ results.overview }}<a href="https://www.imdb.com/find?q={{results.name}}"> read more</a></p>
+            <div class="sources">
+              <a href="https://www.imdb.com/find?q={{results.name}}" target="_blank" data-tooltip="IMDB" data-placement="top">
+                <img src="{% static 'images/imdb.png' %}" alt="imdb" style="width:50px"/>
+              </a>
+              <a href="https://www.justwatch.com/us/search?q={{results.name}}" target="_blank" data-tooltip="Just Watch" data-placement="top">
+                <img src="{% static 'images/just_watch.png' %}" alt="just_watch" style="width:80px"/>
+              </a>
+            </div> <!-- end sources -->
+            {% else %}
+            <p>{{ results.overview }}<a href="https://www.imdb.com/title/{{results.imdb_id}}"> read more</a></p>
+            <div class="sources">
+              <a href="https://www.imdb.com/title/{{results.imdb_id}}" target="_blank" data-tooltip="IMDB" data-placement="top">
+                <img src="{% static 'images/imdb.png' %}" alt="imdb" style="width:50px"/>
+              </a>
+              <a href="https://www.justwatch.com/us/search?q={{results.title}}" target="_blank" data-tooltip="Just Watch" data-placement="top">
+                <img src="{% static 'images/just_watch.png' %}" alt="just_watch" style="width:80px"/>
+              </a>
+            </div> <!-- end sources -->
+            {% endif %}
+          </div> <!-- end column2 -->
+        </div> <!-- end description -->
+      </div> <!-- end container -->
+    </div> <!-- end movie-card-full -->
+  </div>
+</div>
 </body>
 {% endblock %}
