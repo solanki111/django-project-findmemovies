@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <title>FinemeMovies</title>
+  <!-- CSS only -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+  <style>
+
+{% load static %}
+
+@font-face {
+  font-family: 'Oswald';
+  font-style: normal;
+  font-weight: 400;
+  src: url(https://fonts.gstatic.com/s/oswald/v36/TK3_WkUHHAIjg75cFRf3bXL8LICs1_FvsUZiYA.ttf) format('truetype');
+}
+
+#bg{
+  background-size: 100%;
+  background-position: top;
+  background-attachment: fixed;
+}
+
+.header {
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 40px;
+  padding: 0;
+  margin: 0;
+  text-align: left;
+  background: none;
+  opacity: 1;
+  color: none;
+  #background-color: rgba(0, 0, 0, 0.8);
+  background-color: transparent;
+  position: fixed;
+}
+
+.header h1 {
+  font-size: 20px;
+}
+
+article.flashcard a:link, a:visited {
+  display: inline-block;
+  padding: 5px 10px;
+  #text-align: center;
+  text-decoration: none;
+  background-color: #C85073;
+  color: #DDD;
+}
+
+html, body {
+  background: #333;
+  border: 0px;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+}
+
+html {
+  #padding: 50px;
+  display: table;
+}
+
+body {
+  display: table-cell;
+  vertical-align: middle;
+}
+
+article.flashcard {
+  display: inline-block;
+  margin: 0px auto;
+  border: 1px rgba(255, 255, 255, 0.03) solid;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+  width: 100%;
+  max-width: 250px;
+  height: 100%;
+  max-height: 360px;
+  margin-left: 1%;
+}
+article.flashcard input[type=checkbox] {
+  display: none;
+}
+article.flashcard input[type=checkbox]:hover ~ label section.front {
+  height: 0%;
+  border-radius: 20px;
+}
+article.flashcard input[type=checkbox]:hover ~ label section.back {
+  height: 100%;
+  border-radius: 20px;
+}
+article.flashcard label {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+article.flashcard section {
+  display: block;
+  font: 30px 'Oswald', sans-serif;
+  text-align: center;
+  width: 100%;
+  transition: all 0.2s linear 0s;
+  overflow: hidden;
+}
+article.flashcard section.front {
+  color: #BA1F53;
+  background: #DDD;
+  height: 100%;
+  border-radius: 20px;
+  line-height: 320px;
+}
+article.flashcard section.back {
+  color: #DDD;
+  background: #C85073;
+  height: 0%;
+  border-radius: 20px;
+}
+
+
+</style>
+</head>
+<body id="bg" style="background-image:url('{% static 'images/background.png' %}');">
+<div class="header">
+  <h1><a href="{% url 'index' %}"><img src="{% static 'images/logo.png' %}" style="width:150px"></a></h1>
+</div>
+
+<article class="flashcard">
+  <input id="flashcard-5" type="checkbox" />
+  <label for="flashcard-5">
+    <section class="front">
+      Not Found!
+    </section>
+    <section class="back">
+      <a href="{% url 'index' %}">The movie you're looking for is not found in the database! Try again...</a>
+    </section>
+  </label>
+</article>
+
+
+<!-- partial -->
+<script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
+
+</body>
+</html>

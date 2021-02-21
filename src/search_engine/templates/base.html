@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- CSS only -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+  <style>
+
+{% load static %}
+
+@font-face {
+  font-family: 'Oswald';
+  font-style: normal;
+  font-weight: 400;
+  font-color:#BA1F53;
+  src: url(https://fonts.gstatic.com/s/oswald/v36/TK3_WkUHHAIjg75cFRf3bXL8LICs1_FvsUZiYA.ttf) format('truetype');
+}
+
+#bg{
+  background-size: 100%;
+  background-position: top;
+  background-attachment: fixed;
+}
+
+/* Header/Blog Title */
+.header {
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 40px;
+  padding: 0;
+  margin: 0;
+  text-align: left;
+  background: none;
+  opacity: 1;
+  color: none;
+  #background-color: rgba(0, 0, 0, 0.8);
+  background-color: transparent;
+  position: fixed;
+}
+
+.header h1 {
+  font-size: 20px;
+  color: #f2f2f2;
+}
+
+/* Footer */
+.footer {
+  position: fixed;
+  padding: 20px;
+  text-align: center;
+  background: #ddd;
+  margin-top: 20px;
+  vertical-align: bottom;
+  background-color: black;
+  bottom: 10px;
+  width: 100%;
+  height: 3.0rem;
+  color: #BA1F53;
+  font: 10px 'Oswald', sans-serif;
+}
+
+/* Responsive layout - when the screen is less than 800px wide, make the two columns stack on top of each other instead of next to each other */
+@media screen and (max-width: 800px) {
+  .leftcolumn, .rightcolumn {
+    width: 100%;
+    padding: 0;
+  }
+}
+
+/* Responsive layout - when the screen is less than 400px wide, make the navigation links stack on top of each other instead of next to each other */
+@media screen and (max-width: 400px) {
+  .topnav a {
+    float: none;
+    width: 100%;
+  }
+}
+</style>
+    <title> FindmeMovies </title>
+</head>
+<body id="bg" style="background-image:url('{% static 'images/background.png' %}');">
+<div class="header">
+    <h1><a href="{% url 'index' %}"><img src="{% static 'images/logo.png' %}" style="width:150px"></a></h1>
+</div>
+{% block content %}
+
+{% endblock %}
+<div class="footer">
+
+</div>
+</body>
+</html>

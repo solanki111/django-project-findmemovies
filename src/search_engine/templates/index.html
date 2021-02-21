@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+    <meta charset="UTF-8">
+    <title>FinemeMovies</title>
+  <!-- CSS only -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+    <style>
+
+{% load static %}
+
+@font-face {
+  font-family: 'Oswald';
+  font-style: normal;
+  font-weight: 400;
+  src: url(https://fonts.gstatic.com/s/oswald/v36/TK3_WkUHHAIjg75cFRf3bXL8LICs1_FvsUZiYA.ttf) format('truetype');
+}
+
+#bg{
+  background-size: 100%;
+  background-position: top;
+  background-attachment: fixed;
+}
+
+* {
+  #margin: 0px;
+  #padding: 0px;
+  #box-sizing: border-box;
+}
+
+.header {
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 40px;
+  padding: 0;
+  margin: 0;
+  text-align: left;
+  background: none;
+  opacity: 1;
+  color: none;
+  #background-color: rgba(0, 0, 0, 0.8);
+  background-color: transparent;
+  position: fixed;
+}
+
+.header h1 {
+  font-size: 20px;
+}
+
+html, body {
+  background: #333;
+  border: 0px;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+}
+
+html {
+  #padding: 50px;
+  display: table;
+}
+
+body {
+  display: table-cell;
+  vertical-align: middle;
+}
+
+.centerblock{
+  float: center;
+  width: 60%;
+  margin: 10px;
+  padding: 20px;
+  margin-left: 25%;
+}
+
+article.flashcard {
+  display: inline-block;
+  margin: 0px auto;
+  border: 1px rgba(255, 255, 255, 0.03) solid;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+  width: 100%;
+  max-width: 250px;
+  height: 100%;
+  max-height: 360px;
+  margin-left: 1%;
+}
+article.flashcard input[type=checkbox] {
+  display: none;
+}
+article.flashcard input[type=checkbox]:hover ~ label section.front {
+  height: 0%;
+  border-radius: 20px;
+}
+article.flashcard input[type=checkbox]:hover ~ label section.back {
+  height: 100%;
+  border-radius: 20px;
+}
+article.flashcard label {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+article.flashcard section {
+  display: block;
+  font: 30px 'Oswald', sans-serif;
+  text-align: center;
+  width: 100%;
+  transition: all 0.2s linear 0s;
+  overflow: hidden;
+}
+article.flashcard section.front {
+  color: #BA1F53;
+  background: #DDD;
+  height: 100%;
+  border-radius: 20px;
+  line-height: 320px;
+}
+article.flashcard section.back {
+  color: #DDD;
+  background: #C85073;
+  height: 0%;
+  border-radius: 20px;
+}
+article.flashcard a:link, a:visited {
+  display: inline-block;
+  padding: 5px 10px;
+  #text-align: center;
+  text-decoration: none;
+  background-color: #C85073;
+  color: #DDD;
+}
+
+/* Footer */
+.footer {
+  position: fixed;
+  padding: 20px;
+  text-align: center;
+  background: #ddd;
+  margin-top: 20px;
+  vertical-align: bottom;
+  background-color: transparent;
+  bottom: 10px;
+  width: 100%;
+  height: 3.0rem;
+  color: #BA1F53;
+  font: 10px 'Oswald', sans-serif;
+}
+
+/* Responsive layout - when the screen is less than 800px wide, make the two columns stack on top of each other instead of next to each other */
+@media screen and (max-width: 800px) {
+  .leftcolumn, .rightcolumn {
+    width: 100%;
+    padding: 0;
+  }
+}
+
+/* Responsive layout - when the screen is less than 400px wide, make the navigation links stack on top of each other instead of next to each other */
+@media screen and (max-width: 400px) {
+  .topnav a {
+    float: none;
+    width: 100%;
+  }
+}
+</style>
+</head>
+<body id="bg" style="background-image:url('{% static 'images/background.png' %}');">
+<div class="header">
+  <h1><a href="{% url 'index' %}"><img src="{% static 'images/logo.png' %}" style="width:150px"></a></h1>
+</div>
+
+<article class="flashcard">
+  <input id="flashcard-5" type="checkbox" />
+  <label for="flashcard-5">
+    <section class="front">
+      Trending Movies
+    </section>
+    <section class="back">
+      <a href="trending/movies">Find the most trending movies of the day...</a>
+    </section>
+  </label>
+</article>
+<article class="flashcard">
+  <input id="flashcard-6" type="checkbox" />
+  <label for="flashcard-6">
+    <section class="front">
+      Popular Movies
+    </section>
+    <section class="back">
+      <a href="popular/movies">Find the most popular movies of all time by genre...</a>
+    </section>
+  </label>
+</article>
+<article class="flashcard">
+  <input id="flashcard-2" type="checkbox" />
+  <label for="flashcard-2">
+    <section class="front">
+      Similar Movies
+    </section>
+    <section class="back">
+      <a href="search/movies">Find similar movies to a movie of your choice...</a>
+    </section>
+  </label>
+</article>
+<!--<article class="flashcard">-->
+<!--    <input id="flashcard-3" type="checkbox" />-->
+<!--    <label for="flashcard-3">-->
+<!--        <section class="front">-->
+<!--            Discover Movies-->
+<!--        </section>-->
+<!--        <section class="back">-->
+<!--            <a href="search/discover-movies">Discover new movies based on your choices via filter searching...</a>-->
+<!--        </section>-->
+<!--    </label>-->
+<!--</article>-->
+<!--<article class="flashcard">-->
+<!--    <input id="flashcard-4" type="checkbox" />-->
+<!--    <label for="flashcard-4">-->
+<!--        <section class="front">-->
+<!--            Now playing Movies-->
+<!--        </section>-->
+<!--        <section class="back">-->
+<!--            <a href="search/now-playing-movies">Find the movies that are currently playing in theatres...</a>-->
+<!--        </section>-->
+<!--    </label>-->
+<!--</article>-->
+
+<!--<div class="footer">-->
+<!--<h2></h2>-->
+<!--</div>-->
+
+<!-- partial -->
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
+<div class="footer">
+    <h2>© 2011-2021
+        findmemovies.com
+        All rights reserved.
+    </h2>
+</div>
+</body>
+</html>

@@ -1,0 +1,54 @@
+{% extends 'base.html' %}
+{% block content %}
+<head>
+    <title> findSimilarMovies </title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <style>
+* {
+  box-sizing: border-box;
+}
+form.search input[type=text] {
+  padding: 10px;
+  font-size: 20px;
+  border: 1px solid grey;
+  float: left;
+  width: 85%;
+  # margin-left: 10%;
+  background: #f1f1f1;
+}
+
+form.search button {
+  float: left;
+  width: 15%;
+  padding: 10px;
+  background: #333;
+  color: white;
+  font-size: 20px;
+  border: 1px solid grey;
+  border-left: none;
+  cursor: pointer;
+}
+
+form.search button:hover {
+  background: #BA1F53;
+}
+
+form.search::after {
+  content: "";
+  clear: both;
+  display: table;
+}
+    </style>
+</head>
+<body>
+  <div class="container mt-5">
+    <h2 class="text-center"></h2>
+    <div class="row justify-content-center">
+      <form class="search" action="{% url 'search_engine:search-movies' %}" style="margin:auto;max-width:400px"method='POST'>{% csrf_token %}
+        <input type="text" placeholder="Search a movie.." name="q" size=100>
+        <button type="submit"><i class="fa fa-search"></i></button>
+      </form>
+    </div>
+  </div>
+</body>
+{% endblock %}

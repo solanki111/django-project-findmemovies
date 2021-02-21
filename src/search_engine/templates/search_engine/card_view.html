@@ -1,0 +1,135 @@
+{% extends 'base.html' %}
+{% block content %}
+<head>
+
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+  <style>
+		*{
+			font-family: 'Oswald', sans-serif;
+      -webkit-user-select: none;
+      -moz-user-select: -moz-none;
+      -o-user-select: none;
+      user-select: none;
+		}
+		img {
+      -webkit-user-drag: none;
+      -moz-user-drag: none;
+      -o-user-drag: none;
+      user-drag: none;
+		}
+		img {
+			pointer-events: none;
+		}
+		.movie_card{
+			padding: 0 !important;
+			width: 14.5rem;
+			margin:14px;
+			border-radius: 10px;
+			box-shadow: 0 3px 4px 0 rgba(0, 0, 0, 0.2), 0 4px 15px 0 rgba(0, 0, 0, 0.19);
+		}
+		.movie_card img{
+			border-top-left-radius: 10px;
+			border-top-right-radius: 10px;
+			height: 21rem;
+		}
+		.movie_info{
+			color: #BA1F53;
+		}
+
+		.movie_info i{
+			font-size: 20px;
+			color: #FFD700;
+		}
+		.card-title{
+			width: 80%;
+			height: 4rem;
+			color: #BA1F53;
+		}
+		.find_button{
+			background-color: #333;
+   		position: absolute;
+			width: 60px;
+			height: 60px;
+			border-radius: 50%;
+			right: 11px;
+			bottom: 111px;
+			font-size: 27px;
+			padding-left: 18px;
+			padding-top: 16px;
+			color: #FFFFFF;
+			cursor: pointer;
+		}
+    .find_button:hover {
+      background-color: #ff3d49;
+    }
+
+		.credits{
+			margin-top: 20px;
+			margin-bottom: 20px;
+			border-radius: 8px;
+			border: 2px solid #8e24aa;
+			font-size: 18px;
+		}
+		.credits .card-body{
+			padding: 0;
+		}
+		.credits p{
+			padding-top: 15px;
+			padding-left: 18px;
+		}
+		.credits .card-body i{
+			color: #8e24aa;
+		}
+	</style>
+</head>
+
+<div class="container mt-5">
+  <h2 class="text-center"></h2>
+  <div class="row justify-content-center">
+    {% for each in results %}
+      {% if each.poster_path %}
+        {% if each.name %}
+        <div class="card movie_card">
+          <a name="get-tv" href='{% url "search_engine:get-tv" tv_id=each.id %}'><!--
+            --><img src="https://image.tmdb.org/t/p/w500/{{each.poster_path}}"class="card-img-top" alt="{{each.name}}"><!--
+        --></a>
+          <div class="card-body">
+            <a name="similar-tv" href='{% url "search_engine:similar-tv" tv_id=each.id %}'><!--
+              --><i class="fa fa-search find_button" data-toggle="tooltip" data-placement="bottom" title="Find Similar"></i><!--
+           --></a>
+            <h5 class="card-title">{{each.name|truncatewords:5}}</h5>
+            <span class="movie_info">{{each.first_air_date|slice:":4"}} (TV)</span>
+            <span class="movie_info float-right"><i class="fas fa-star"></i>{{each.vote_average}}/10</span>
+          </div>
+        </div>
+        {% else %}
+        <div class="card movie_card">
+          <a name="get-movie" href='{% url "search_engine:get-movie" movie_id=each.id %}'><!--
+                --><img src="https://image.tmdb.org/t/p/w500/{{each.poster_path}}"class="card-img-top" alt="{{each.title}}"><!--
+            --></a>
+          <div class="card-body">
+            <a names="similar-movies" href='{% url "search_engine:similar-movies" movie_id=each.id %}'><!--
+                --><i class="fa fa-search find_button" data-toggle="tooltip" data-placement="bottom" title="Find Similar"></i><!--
+             --></a>
+            <h5 class="card-title">{{each.title|truncatewords:5}}</h5>
+            <span class="movie_info">{{each.release_date|slice:":4"}}</span>
+            <span class="movie_info float-right"><i class="fas fa-star"></i>{{each.vote_average}}/10</span>
+          </div>
+        </div>
+        {% endif %}
+      {% endif %}
+    {% endfor %}
+  </div>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+<script>
+		$(function () {
+  		$('[data-toggle="tooltip"]').tooltip()
+	})
+	</script>
+{% endblock %}
