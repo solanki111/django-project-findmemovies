@@ -1,7 +1,6 @@
 import requests
 from pprint import pprint as pp
 import os
-from imdb import IMDb
 
 
 class RapidApi:
@@ -14,9 +13,6 @@ class RapidApi:
             'x-rapidapi-host': os.environ.get('rapid_host'),
             'x-rapidapi-key': os.environ.get('rapid_key')
         }
-
-    #def querystring(self):
-    #    return {}
 
     def url(self):
         return os.environ.get('rapid_url')
