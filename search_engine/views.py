@@ -35,7 +35,6 @@ def search(request):
 
 
 def similar_movie(request, movie_id):
-    pp(f'sim-movie_id>>>> {movie_id}')
     if movie_id is not None:
         movie_db = TheMovieDb()
         response = movie_db.api_request('sim', movie_id)
@@ -49,7 +48,6 @@ def similar_movie(request, movie_id):
 
 
 def similar_tv(request, tv_id):
-    pp(f'sim-tv_id>>>> {tv_id}')
     if tv_id is not None:
         movie_db = TheMovieDb()
         response = movie_db.api_request('sit', tv_id)
@@ -63,7 +61,6 @@ def similar_tv(request, tv_id):
 
 
 def movie(request, movie_id):
-    pp(f'movie_id>>>> {movie_id}')
     if movie_id is not None:
         movie_db = TheMovieDb()
         response = movie_db.api_request('mov', movie_id)
@@ -80,7 +77,6 @@ def movie(request, movie_id):
 
 
 def tv(request, tv_id):
-    pp(f'tv_id>>>> {tv_id}')
     pp(tv_id)
     if tv_id is not None:
         movie_db = TheMovieDb()
