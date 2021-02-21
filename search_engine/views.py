@@ -1,5 +1,4 @@
-from django.shortcuts import render, redirect
-from pprint import pprint as pp
+from django.shortcuts import render
 from .functions import TheMovieDb
 from django.views.decorators.cache import cache_page
 from django.views.decorators.csrf import csrf_exempt
@@ -77,7 +76,6 @@ def movie(request, movie_id):
 
 
 def tv(request, tv_id):
-    pp(tv_id)
     if tv_id is not None:
         movie_db = TheMovieDb()
         response = movie_db.api_request('tv', tv_id)
