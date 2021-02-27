@@ -1,9 +1,9 @@
 {% extends 'base.html' %}
 {% block content %}
 <head>
-    <title> findSimilarMovies </title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <style>
+  <title> findSimilarMovies </title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <style>
 * {
   box-sizing: border-box;
 }
@@ -38,7 +38,16 @@ form.search::after {
   clear: both;
   display: table;
 }
-    </style>
+  </style>
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-MCMQC8JFQ9"></script>
+  <script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-MCMQC8JFQ9');
+</script>
 </head>
 <body>
   <div class="container mt-5">

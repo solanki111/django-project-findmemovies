@@ -139,8 +139,17 @@ article.flashcard a:link, a:visited {
   font: 10px 'Oswald', sans-serif;
 }
 </style>
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-MCMQC8JFQ9"></script>
+  <script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-MCMQC8JFQ9');
+</script>
 </head>
-<body id="bg" style="background-image:url('{% static 'images/background.png' %}');">
+<body id="bg" style="background-image:url('{% static 'images/background.png' %}');" ontouchstart="">
 <div class="header">
   <h1><a href="{% url 'index' %}"><img src="{% static 'images/logo.png' %}" style="width:150px"></a></h1>
 </div>

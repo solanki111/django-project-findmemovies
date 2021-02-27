@@ -3,7 +3,6 @@ from .functions import TheMovieDb
 from django.views.decorators.cache import cache_page
 from django.views.decorators.csrf import csrf_exempt
 from django.views.decorators.http import require_http_methods
-from django.views.defaults import page_not_found, server_error, permission_denied
 
 
 @csrf_exempt
@@ -122,10 +121,10 @@ def check_response(response):
     if response.status_code == 200:
         return response.json()
     elif response.status_code == 404:
-        raise page_not_found
+        return render('404.html')
     elif response.status_code == 403:
-        raise permission_denied
+        return render('403.html')
     elif response.status_code == 500:
-        raise server_error
+        return render('500.html')
     else:
         return render('400.html')

@@ -65,7 +65,7 @@ class TheMovieDb:
         if options[0] == "dis":
             full_url = self.url() + self.api_options(options[0]) + self.api_key() + 'rest_url' + os.environ.get('moviedb_rest_url')
         elif options[0] == "ser":
-            full_url = self.url() + self.api_options(options[0]) + self.api_key() + options[1] + os.environ.get('moviedb_rest_url') + '&include_adult=true'
+            full_url = self.url() + self.api_options(options[0]) + self.api_key() + options[1] + os.environ.get('moviedb_rest_url')
         elif options[0] == "mov":
             full_url = self.url() + self.api_options(options[0]) + options[1] + self.api_key() + os.environ.get('moviedb_rest_url')
         elif options[0] == "sim":
